@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug pip-installed nerfstudio",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "nerfstudio.scripts.train",
+            "args": [
+                "dn-splatter",
+                "--pipeline.model.use-depth-loss=True",
+                "--pipeline.model.depth-loss-type=EdgeAwareLogL1",
+                "--pipeline.model.depth-lambda=0.2",
+                "--pipeline.model.use-normal-loss=False",
+                "--pipeline.model.use-normal-tv-loss=False",
+                "--pipeline.model.normal-supervision=depth",
+                "normal-nerfstudio",
+                "--data=./datasets/cup_cuboid_for_dn_splatter",
+                "--load_normals=False"
+            ],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/nerfstudio_debug:${env:PYTHONPATH}"
+            },
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ]
+}
