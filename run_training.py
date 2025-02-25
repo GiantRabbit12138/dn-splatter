@@ -22,19 +22,6 @@ cmd = [
     "--data", str(Path(config["data_path"]).resolve())
 ]
 
-# 执行命令并记录日志
-with open(config["log_file"], "w") as f:
-    process = subprocess.run(
-        cmd, 
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        text=True
-    )
-    f.write(process.stdout)
-    # # 实时输出到屏幕和文件
-    # for line in process.stdout:
-    #     print(line, end='')  # 实时显示在终端
-    #     f.write(line)        # 同时写入文件
-    #     f.flush()           # 确保立即写入
+process = subprocess.run(cmd)
 
 print(f"训练完成！退出码: {process.returncode}")
